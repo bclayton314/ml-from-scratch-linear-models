@@ -9,8 +9,11 @@ This repo implements linear regression (least squares) from scratch with:
 ## Why
 Goal: connect linear algebra (subspaces, rank, projections) to a working ML implementation.
 
+TESTTEST
+
 ## Quickstart
 ```bash
 pip install -e .
 python experiments/synthetic_1d.py
 python experiments/collinearity_rank_deficiency.py
+
