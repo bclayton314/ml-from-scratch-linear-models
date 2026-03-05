@@ -9,8 +9,6 @@ This repo implements linear regression (least squares) from scratch with:
 ## Why
 Goal: connect linear algebra (subspaces, rank, projections) to a working ML implementation.
 
-TESTTEST
-
 ## Quickstart
 ```bash
 pip install -e .
