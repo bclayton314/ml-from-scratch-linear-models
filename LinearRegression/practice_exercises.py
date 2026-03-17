@@ -81,6 +81,67 @@ import numpy as np
 
 
 # 7. Compute the Closed-Form Solution
+# X = np.array([
+#     [1, 1],
+#     [1, 2],
+#     [1, 3]
+# ], dtype=float)
+
+# y = np.array([2, 3, 4], dtype=float)
+
+# # Closed-Form Solution
+# # w = (X^T * X)^-1 * (X ** T) * y
+
+# w = np.linalg.inv(X.T @ X) @ (X.T) @ y
+
+# print(w)
+
+
+# 8. Use the Pseudo-Inverse Instead
+# X = np.array([
+#     [1, 1],
+#     [1, 2],
+#     [1, 3]
+# ], dtype=float)
+
+# y = np.array([2, 3, 4], dtype=float)
+
+# # Pseudo-Inverse Solution
+# w = np.linalg.pinv(X) @ y
+
+# print(w)
+
+
+# 9. Check the Projection Property
+# X = np.array([
+#     [1, 1],
+#     [1, 2],
+#     [1, 3]
+# ], dtype=float)
+
+# y = np.array([2, 3, 4], dtype=float)
+
+# w = np.linalg.pinv(X) @ y
+
+# # Projection Property
+# y_bar = X @ w
+# r = y - y_bar
+# ans = X.T @ r
+
+# print(ans)
+
+
+#10. Compute One Gradient Step by Hand in Numpy 
+# X = np.array([
+#     [1, 1],
+#     [1, 2],
+#     [1, 3]
+# ], dtype=float)
+
+# y = np.array([2, 3, 4], dtype=float)
+# w = np.array([0.0, 0.0])
+# lr = 0.1
+
 
 
 
