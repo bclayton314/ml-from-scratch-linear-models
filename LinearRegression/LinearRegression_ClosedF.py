@@ -1,16 +1,69 @@
 import numpy as np
+from typing import Literal
 
-X = np.array([
-    [1, 1],
-    [1, 2],
-    [1, 3]
-], dtype=float)
 
-y = np.array([2, 3, 4], dtype=float)
+# X = np.array([
+#     [1, 1],
+#     [1, 2],
+#     [1, 3]
+# ], dtype=float)
 
-# Closed-Form Solution
-# w = (X^T * X)^-1 * (X ** T) * y
+# y = np.array([2, 3, 4], dtype=float)
 
-w = np.linalg.inv(X.T @ X) @ (X.T) @ y
 
-print(w)
+
+class LinearRegression:
+    def __init__(self, fit_intercept: bool=True, method: Literal["pinv", "normal"] = "pinv") -> None:
+        if method not in {"pinv", "normal"}:
+            raise ValueError("method must be either 'pinv' or 'normal'")
+        self.fit_intercept = fit_intercept
+        self.method = method
+        self.coef_ = None
+        self.intercept_ = 0.0
+        self.fitted_ = False
+
+    def _add_intercept_column(self, X):
+        ones = np.ones((X.shape[0], 1), dtype=float)
+        return np.hstack((ones, X))
+
+    def solve_weights(self, X, y):
+        if self.method == "pinv":
+            return np.linalg.pinv(X) @ y
+
+        if self.method == "normal":
+            return np.linalg.inv(X.T @ X) @ (X.T) @ y
+
+    def fit(self, X, y):
+        X_intercept = self._add_intercept_column(X)
+        w = self.solve_weights(X_intercept, y)
+
+        if self.fit_intercept:
+            self.intercept_ = w[0]
+            self.coef_ = w[1:]
+        else:
+            self.intercept_ = 0.0
+            self.coef_ = w
+
+        self.fitted_ = True
+
+    def predict(self, X):
+        if not self.fitted_:
+            raise ValueError("Model has not been fit yet")
+        
+        return X @ self.coef_ + self.intercept_
+    
+    # be sure to post a copy of R^2 formula and explanation
+    def score_r2(self, X, y):
+        y_pred = self.predict(X)
+        ss_res = np.sum((y - y_pred) ** 2)
+        ss_tot = np.sum((y - np.mean(y)) ** 2)
+
+        return float(1.0 - ss_res / ss_tot)
+
+    def mse(self, X, y):
+        y_pred = self.predict(X)
+        return float(np.mean((y - y_pred) ** 2))
+
+
+
+
