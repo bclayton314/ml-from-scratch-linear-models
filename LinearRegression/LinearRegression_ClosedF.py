@@ -34,7 +34,11 @@ class LinearRegression:
             return np.linalg.inv(X.T @ X) @ (X.T) @ y
 
     def fit(self, X, y):
-        X_intercept = self._add_intercept_column(X)
+        if self.fit_intercept:
+            X_intercept = self._add_intercept_column(X)
+        else:
+            X_intercept = X
+        
         w = self.solve_weights(X_intercept, y)
 
         if self.fit_intercept:
@@ -53,7 +57,7 @@ class LinearRegression:
         return X @ self.coef_ + self.intercept_
     
     # be sure to post a copy of R^2 formula and explanation
-    def score_r2(self, X, y):
+    def r_squared(self, X, y):
         y_pred = self.predict(X)
         ss_res = np.sum((y - y_pred) ** 2)
         ss_tot = np.sum((y - np.mean(y)) ** 2)
