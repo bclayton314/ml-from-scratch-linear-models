@@ -6,12 +6,3 @@ This repo implements linear regression (least squares) from scratch with:
 - Ridge regression (L2) closed-form
 - K-fold cross-validation + metrics
 
-## Why
-Goal: connect linear algebra (subspaces, rank, projections) to a working ML implementation.
-
-## Quickstart
-```bash
-pip install -e .
-python experiments/synthetic_1d.py
-python experiments/collinearity_rank_deficiency.py
-
