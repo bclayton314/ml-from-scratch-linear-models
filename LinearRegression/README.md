@@ -25,14 +25,10 @@ Linear Regression models the relationship between input features X and target va
 
 Where:
 
-**x = input**
-
-**w = weight (slope)**
-
-**b = bias (intercept)**
-
-**ŷ = predicted value**
-
+- x = input
+- w = weight (slope)
+- b = bias (intercept)
+- ŷ = predicted value
 
 For multiple features:
 
@@ -43,7 +39,27 @@ Or, using an intercept column:
 **ŷ = Xθ**
 
 
-## Loss Function (Mean Squared Error)
+### Gradient Descent
+Instead of solving analytically, we minimize the loss using gradient descent.
+
+**w = w - η * ∂J/∂w**
+
+**b = b - η * ∂J/∂b**
+
+
+### Closed-Form Solution (Normal Equation)
+Instead of iterative updates, we solve for 𝜃 directly:
+
+**θ = (XᵀX)⁻¹ Xᵀy**
+
+In practice, we often use the pseudo-inverse instead of matrix inversion:
+
+**θ = (XᵀX)^(-1) Xᵀy**   ← theoretical
+
+__θ = pinv(X)*y__        ← practical
+
+
+### Loss Function (Mean Squared Error)
 The objective is to minimize Mean Squared Error:
 
 **J(w, b) = (1/n) * Σ (yᵢ - ŷᵢ)²**
@@ -61,19 +77,6 @@ Key properties:
 
 
 
-### Gradient Descent
-Gradient descent iteratively updates the model parameters:
-
-\[
-w \leftarrow w - \eta \frac{\partial J}{\partial w}
-\]
-
-### Closed-Form Solution
-The analytical least-squares solution is:
-
-\[
-\theta = (X^T X)^{-1} X^T y
-\]
 
 ## Why Two Implementations?
 
