@@ -21,36 +21,36 @@ The purpose of this project is to understand the mathematics and implementation 
 
 Linear Regression models the relationship between input features X and target values y as:
 
-ŷ = wx + b
+**ŷ = wx + b**
 
 Where:
 
-x = input
+**x = input**
 
-w = weight (slope)
+**w = weight (slope)**
 
-b = bias (intercept)
+**b = bias (intercept)**
 
-ŷ = predicted value
+**ŷ = predicted value**
 
 
 For multiple features:
 
-ŷ = Xw + b
+**ŷ = Xw + b**
 
 Or, using an intercept column:
 
-ŷ = Xθ
+**ŷ = Xθ**
 
 
 ## Loss Function (Mean Squared Error)
 The objective is to minimize Mean Squared Error:
 
-J(w, b) = (1/n) * Σ (yᵢ - ŷᵢ)²
+**J(w, b) = (1/n) * Σ (yᵢ - ŷᵢ)²**
 
 Substituting the model:
 
-J(w, b) = (1/n) * Σ (yᵢ - (wxᵢ + b))²
+**J(w, b) = (1/n) * Σ (yᵢ - (wxᵢ + b))²**
 
 Key properties:
 
