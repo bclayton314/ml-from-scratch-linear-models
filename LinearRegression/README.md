@@ -19,17 +19,36 @@ The purpose of this project is to understand the mathematics and implementation 
 
 ## Mathematical Background
 
-Linear Regression models the relationship between input features \(X\) and target values \(y\) as:
+Linear Regression models the relationship between input features X and target values y as:
 
-\[
-\hat{y} = Xw + b
-\]
+ŷ = wx + b
 
+Where:
+x = input
+w = weight (slope)
+b = bias (intercept)
+ŷ = predicted value
+
+For multiple features:
+ŷ = Xw + b
+
+Or, using an intercept column:
+ŷ = Xθ
+
+
+## Loss Function (Mean Squared Error)
 The objective is to minimize Mean Squared Error:
+J(w, b) = (1/n) * Σ (yᵢ - ŷᵢ)²
 
-\[
-J(w, b) = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
+Substituting the model:
+J(w, b) = (1/n) * Σ (yᵢ - (wxᵢ + b))²
+
+Key properties:
+- Penalizes large errors more heavily
+- Convex → guarantees a global minimum
+
+
+
 
 ### Gradient Descent
 Gradient descent iteratively updates the model parameters:
