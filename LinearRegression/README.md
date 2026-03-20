@@ -24,27 +24,38 @@ Linear Regression models the relationship between input features X and target va
 ŷ = wx + b
 
 Where:
+
 x = input
+
 w = weight (slope)
+
 b = bias (intercept)
+
 ŷ = predicted value
 
+
 For multiple features:
+
 ŷ = Xw + b
 
 Or, using an intercept column:
+
 ŷ = Xθ
 
 
 ## Loss Function (Mean Squared Error)
 The objective is to minimize Mean Squared Error:
+
 J(w, b) = (1/n) * Σ (yᵢ - ŷᵢ)²
 
 Substituting the model:
+
 J(w, b) = (1/n) * Σ (yᵢ - (wxᵢ + b))²
 
 Key properties:
+
 - Penalizes large errors more heavily
+
 - Convex → guarantees a global minimum
 
 
