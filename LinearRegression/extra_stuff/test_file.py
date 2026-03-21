@@ -1,6 +1,6 @@
 import numpy as np
-#from LinearRegression_ClosedF import LinearRegression
-from LinearRegression_GradD import LinearRegressionGD
+from LinearRegression_ClosedF import LinearRegression
+#from LinearRegression_GradD import LinearRegressionGD
 
 
 X = np.array([
@@ -12,12 +12,12 @@ X = np.array([
 
 y = np.array([3.0, 5.0, 7.0, 9.0])  # y = 1 + 2x
 
-#model = LinearRegression(fit_intercept=True, method="pinv")
-model = LinearRegressionGD(
-    fit_intercept=True,
-    learn_rate=0.05,
-    n_iters=5000,
-)
+model = LinearRegression(fit_intercept=True, method="pinv")
+# model = LinearRegressionGD(
+#     fit_intercept=True,
+#     learn_rate=0.05,
+#     n_iters=5000,
+# )
 
 model.fit(X, y)
 

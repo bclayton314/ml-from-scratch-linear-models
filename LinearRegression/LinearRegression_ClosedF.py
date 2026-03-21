@@ -2,17 +2,35 @@ import numpy as np
 from typing import Literal
 
 
-# X = np.array([
-#     [1, 1],
-#     [1, 2],
-#     [1, 3]
-# ], dtype=float)
-
-# y = np.array([2, 3, 4], dtype=float)
-
-
-
 class LinearRegression:
+    """
+    Linear Regression from scratch using NumPy.
+
+    Supports:
+    - pseudoinverse solution (recommended)
+    - normal equation solution
+
+    Parameters
+    ----------
+    fit_intercept : bool, default=True
+        Whether to fit an intercept term.
+
+    method : {"pinv", "normal"}, default="pinv"
+        Solver to use:
+        - "pinv": Moore-Penrose pseudoinverse (more numerically stable)
+        - "normal": Normal equation using inverse of X^T X
+
+    Attributes
+    ----------
+    coef_ : np.ndarray of shape (n_features,)
+        Learned feature weights.
+
+    intercept_ : float
+        Learned intercept.
+
+    fitted_ : bool
+        Whether the model has been fit.
+    """
     def __init__(self, fit_intercept: bool=True, method: Literal["pinv", "normal"] = "pinv") -> None:
         if method not in {"pinv", "normal"}:
             raise ValueError("method must be either 'pinv' or 'normal'")
@@ -49,6 +67,7 @@ class LinearRegression:
             self.coef_ = w
 
         self.fitted_ = True
+        return self
 
     def predict(self, X):
         if not self.fitted_:
